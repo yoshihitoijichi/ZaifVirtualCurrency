@@ -4,6 +4,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import net.ijichi.zaifvirtualcurrency.MySharedPreferences.accessToken
+import net.ijichi.zaifvirtualcurrency.api.model.enum.TradeType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,28 +27,24 @@ object ApiUtil{
 
     val gson: Gson
         get() {
-//            val typeAdapters = mapOf(
-//                AccessToken.adapter,
-//                Visibility.adapter,
-//                MediaAttachmentType.adapter,
-//                Notification.Type.adapter,
-//                Enquete.adapter
-//            )
+            val typeAdapters = mapOf(
+                TradeType.adapter
+            )
 
             return GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
-//                .let {
-//                    typeAdapters.forEach { e ->
-//                        it.registerTypeAdapter(e.key, e.value)
-//                    }
-//                    it
-//                }
+                .let {
+                    typeAdapters.forEach { e ->
+                        it.registerTypeAdapter(e.key, e.value)
+                    }
+                    it
+                }
                 .create()
         }
 
 
-    fun <T> generateCaller(clazz: Class<T>, urlType: UrlType, accessToken: String? = null): T {
+    fun <T> generateCaller(clazz: Class<T>, urlType: UrlType): T {
         val httpClient = createClient()
         val baseUrl = urlType.url
 

@@ -27,7 +27,7 @@ class BtcJpyRecyclerAdapter(
         when(holder){
             is BtcJpyViewHolder -> {
                 val item = states[position]
-                holder.update(item)
+                holder.update(item, position % 2 == 0)
             }
         }
     }

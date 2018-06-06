@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -44,15 +45,6 @@ class  BtcJpyFragment : Fragment() {
             activity?.runOnUiThread {
                 Timber.i("adapter?.add(it)")
                 adapter?.addAllTop(it.trades)
-                //                val position = (binding.timelineList?.layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition() ?: 0
-//                val top = (binding.timelineList?.layoutManager as? LinearLayoutManager)?.getChildAt(0)?.top ?: 0
-//                Timber.i("timeline type:${type.request}, status.content:${it.content}")
-//
-//                if (position == 0 && top == 0) {
-//                    addItemToTop(it)
-//                } else {
-//                    addItemToTopWithNotifyInserted(it)
-//                }
             }
         }
     }
@@ -67,6 +59,12 @@ class  BtcJpyFragment : Fragment() {
         // divider
         val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         binding.btcJpyRecycler.addItemDecoration(itemDecoration)
+
+        binding.btcJpyRecycler.setHasFixedSize(false)
+        binding.btcJpyRecycler.itemAnimator = DefaultItemAnimator()
+        // 要素変更時のアニメーションを抑止して、ちらつきを防ぐ
+        (binding.btcJpyRecycler.itemAnimator as DefaultItemAnimator).supportsChangeAnimations = false
+        binding.btcJpyRecycler.overScrollMode = View.OVER_SCROLL_ALWAYS
 
         adapter?.let {
             binding.btcJpyRecycler.adapter = it

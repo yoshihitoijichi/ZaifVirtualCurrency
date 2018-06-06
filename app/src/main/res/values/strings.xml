@@ -6,7 +6,7 @@
     <string name="label_trade_amount">数量:</string>
     <string name="label_trade_price">価格:</string>
 
-    <string name="bid">買い</string>
-    <string name="ask">売り</string>
+    <string name="bid">買</string>
+    <string name="ask">売</string>
 
 </resources>
