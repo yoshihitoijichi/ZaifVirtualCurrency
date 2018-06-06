@@ -4,6 +4,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.os.Handler
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -42,7 +43,7 @@ class  BtcJpyFragment : Fragment() {
             Timber.i("streamStatus:$it")
             activity?.runOnUiThread {
                 Timber.i("adapter?.add(it)")
-                adapter?.add(it)
+                adapter?.addAllTop(it.trades)
                 //                val position = (binding.timelineList?.layoutManager as? LinearLayoutManager)?.findFirstVisibleItemPosition() ?: 0
 //                val top = (binding.timelineList?.layoutManager as? LinearLayoutManager)?.getChildAt(0)?.top ?: 0
 //                Timber.i("timeline type:${type.request}, status.content:${it.content}")
@@ -62,6 +63,10 @@ class  BtcJpyFragment : Fragment() {
         }
 
         binding.btcJpyRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+
+        // divider
+        val itemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        binding.btcJpyRecycler.addItemDecoration(itemDecoration)
 
         adapter?.let {
             binding.btcJpyRecycler.adapter = it

@@ -24,16 +24,16 @@ abstract class AbstractRecyclerAdapter<D>(private val states: ArrayList<D>) : Re
         notifyItemRangeRemoved(0, size)
     }
 
-    fun add(state: D) {
+    fun addTop(state: D) {
         state?.let {
-            this.states.add(it)
+            this.states.add(0, state)
             notifyDataSetChanged()
         }
     }
 
-    fun addAll(states: ArrayList<D>?) {
+    fun addAllTop(states: List<D>?) {
         states?.let {
-            this.states.addAll(it)
+            this.states.addAll(0, it.reversed())
             notifyDataSetChanged()
         }
     }

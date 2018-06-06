@@ -8,48 +8,38 @@ import android.widget.FrameLayout
 import net.ijichi.zaifvirtualcurrency.MySharedPreferences.init
 import net.ijichi.zaifvirtualcurrency.R
 import net.ijichi.zaifvirtualcurrency.api.model.entity.StreamStatus
+import net.ijichi.zaifvirtualcurrency.api.model.entity.Trade
 import net.ijichi.zaifvirtualcurrency.api.model.extension.applyLayoutPrams
 import net.ijichi.zaifvirtualcurrency.api.model.extension.applySelectableItemBackground
+import net.ijichi.zaifvirtualcurrency.api.model.extension.applyText
 import net.ijichi.zaifvirtualcurrency.api.model.extension.matchParent
 import net.ijichi.zaifvirtualcurrency.databinding.ItemBtcJpyBinding
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.util.*
 
 /**
  * BTC/JPY item view
  */
 class BtcJpyItemView(context: Context?) : FrameLayout(context, null, 0) {
 
-    private val binding = DataBindingUtil.inflate<ItemBtcJpyBinding>(LayoutInflater.from(getContext()), R.layout.item_btc_jpy, this, true)
+    private val binding = DataBindingUtil.inflate<ItemBtcJpyBinding>(
+        LayoutInflater.from(context), R.layout.item_btc_jpy, this, true)
 
     init {
         applyLayoutPrams(matchParent)
         binding.btcJpyItemParent.applySelectableItemBackground()
     }
 
-    fun update(state: StreamStatus) {
-        binding.btcJpyItemText.text = "test"
+    fun update(trade: Trade) {
+//        binding.btcJpyItemText.text = "test"
 
-//        binding.blomagaItemTitle.applyText(item.title).applyTypeface(Typeface.BOLD)
-//        binding.blomagaItemDescription.applyHtmlText(item.description)
-//
-//        if (item.thumbnailUrl.isNullOrEmpty()) {
-//            binding.blomagaItemImage.gone()
-//        } else {
-//            binding.blomagaItemImage.loadImage(item.thumbnailUrl, isAdjustHeight = true)
-//        }z
-//
-//        if(item.isShowPurchase){
-//            binding.blomagaItemPurchaseParent.visible()
-//            binding.blomagaItemPurchaseText.applyText(R.string.tab_purchase_pay_text)
-//        }else{
-//            binding.blomagaItemPurchaseParent.invisible()
-//        }
-//
-//        val tokyo = DateTimeZone.forID("+09:00")
-//        val now = DateTime(tokyo)
-//        val dt = DateTime(item.publishedAt, tokyo)
-//
-//        binding.blomagaItemTime.applyText(TimeUtil.pastTime(dt, now))
-//        binding.blomagaItemCommentText.text = item.commentCount.toString()
+        val sdf = SimpleDateFormat("yyyy/MM/dd kk:mm:ss", Locale.JAPAN)
+        val date = Date( trade.date * 1000)
+        binding.btcJpyItemTimeText.applyText(sdf.format(date))
+        binding.btcJpyItemTradeActionText.applyText(trade.tradeType)
+        binding.btcJpyItemTradeAmountText.applyText(trade.amount.toString())
+        binding.btcJpyItemTradePriceText.applyText(trade.price.toString())
     }
 
 }
