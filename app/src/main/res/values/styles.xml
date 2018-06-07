@@ -13,6 +13,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!-- toolbar -->
     <style name="AppTheme.DarkToolBar" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorSecondary">@android:color/black</item>
     </style>

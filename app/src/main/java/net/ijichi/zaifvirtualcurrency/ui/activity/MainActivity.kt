@@ -2,6 +2,7 @@ package net.ijichi.zaifvirtualcurrency.ui.activity
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v4.view.ViewPager
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -18,13 +19,18 @@ import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
-    private val service = ZaifService()
-
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        setupActionBar()
+        setupPagerAdapter()
+        testFetch()
+    }
+
+    private fun setupActionBar() {
         setSupportActionBar(binding.mainToolbar)
 
         val toggle = ActionBarDrawerToggle(
@@ -33,10 +39,13 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         binding.mainNavigationDrawer.setNavigationItemSelectedListener {
-            // navigation item select
+            Snackbar.make(binding.root, getString(R.string.coming_soon), Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
             true
         }
+    }
 
+    private fun setupPagerAdapter() {
         val adapter = MainPagerAdapter(supportFragmentManager)
         binding.mainViewPager.adapter = adapter
         binding.mainTabLayout.setupWithViewPager(binding.mainViewPager)
@@ -48,42 +57,45 @@ class MainActivity : AppCompatActivity() {
                 Timber.i("position:$position")
             }
         })
+    }
 
+    private fun testFetch() {
         val exchangeType: ExchangeType = ExchangeType.BTC_JPY
 
+        val service = ZaifService()
         service.getLastPrice(exchangeType).fetch({
             Timber.i("onSuccess lastPrice:${it.lastPrice}")
-        },{
+        }, {
             Timber.e(it)
         })
 
         service.getTicker(exchangeType).fetch({
             Timber.i("onSuccess ticker:$it")
-        },{
+        }, {
             Timber.e(it)
         })
 
         service.getTrades(exchangeType).fetch({
             Timber.i("onSuccess trades:$it")
-        },{
+        }, {
             Timber.e(it)
         })
 
         service.getDepth(exchangeType).fetch({
             Timber.i("onSuccess depth:$it")
-        },{
+        }, {
             Timber.e(it)
         })
 
         service.getCurrencyPairs(ZaifService.CurrencyPairType.ALL).fetch({
             Timber.i("onSuccess currencyPairs:$it")
-        },{
+        }, {
             Timber.e(it)
         })
 
         service.getCurrencies(ZaifService.CurrencyType.ALL).fetch({
             Timber.i("onSuccess currencies:$it")
-        },{
+        }, {
             Timber.e(it)
         })
     }
