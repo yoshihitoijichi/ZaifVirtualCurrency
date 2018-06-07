@@ -24,15 +24,16 @@ class StreamItemView(context: Context?) : FrameLayout(context, null, 0) {
         applySelectableItemBackground()
     }
 
-    fun update(trade: Trade, isEvenNumber: Boolean) {
-//        setBackgroundColor(if(isEvenNumber)Color.CYAN else Color.BLUE)
+    fun update(trade: Trade) {
+        val displayColor =
+            if(trade.tradeType.isBid)R.color.palette_red_8 else R.color.palette_green_7
 
         val sdf = SimpleDateFormat("yyyy/MM/dd kk:mm:ss", Locale.JAPAN)
         val date = Date( trade.date * 1000)
         binding.streamItemTimeText.applyText(sdf.format(date))
-        binding.streamItemTradeActionText.applyTextRes(trade.tradeType.strRes)
-        binding.streamItemTradeAmountText.applyText(trade.amount.toString())
-        binding.streamItemTradePriceText.applyText(trade.price.toString())
+        binding.streamItemTradeActionText.applyTextRes(trade.tradeType.strRes).applyTextColor(displayColor)
+        binding.streamItemTradeAmountText.applyText(trade.amount.toString()).applyTextColor(displayColor)
+        binding.streamItemTradePriceText.applyText(trade.price.toString()).applyTextColor(displayColor)
     }
 
 }

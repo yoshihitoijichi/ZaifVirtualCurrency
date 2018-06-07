@@ -26,7 +26,10 @@
             <android.support.design.widget.TabLayout
                 android:id="@+id/main_tab_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@android:color/white"
+                android:elevation="5dp"
+                app:tabSelectedTextColor="@color/colorAccent"/>
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/main_view_pager"
@@ -42,9 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:headerLayout="@layout/navigation_drawer_header" />
-
-        <!--app:itemBackground="@drawable/drawer_item"-->
-        <!--app:itemTextColor="@color/drawer_item_text"-->
+            app:headerLayout="@layout/navigation_drawer_header"
+            app:menu="@menu/activity_main_drawer"/>
     </android.support.v4.widget.DrawerLayout>
 </layout>

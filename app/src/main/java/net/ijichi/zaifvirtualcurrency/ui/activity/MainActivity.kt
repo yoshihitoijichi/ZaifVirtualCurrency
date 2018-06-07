@@ -3,6 +3,7 @@ package net.ijichi.zaifvirtualcurrency.ui.activity
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.support.v4.view.GravityCompat
 import android.support.v4.view.ViewPager
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -39,8 +40,16 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         binding.mainNavigationDrawer.setNavigationItemSelectedListener {
+            Timber.i("on nav action ${it.title}")
             Snackbar.make(binding.root, getString(R.string.coming_soon), Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
+
+            when (it.itemId) {
+                R.id.nav_login -> { }
+                R.id.nav_exchange -> { }
+            }
+
+            binding.mainDrawerLayout.closeDrawer(GravityCompat.START)
             true
         }
     }

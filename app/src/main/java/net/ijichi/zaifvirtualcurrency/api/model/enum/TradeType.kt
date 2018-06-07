@@ -12,7 +12,13 @@ import java.lang.reflect.Type
  */
 
 enum class TradeType(val str: String, val strRes: Int) {
-    BID("bid", R.string.bid), ASK("ask", R.string.ask),;
+    BID("bid", R.string.bid), ASK("ask", R.string.ask), ;
+
+    val isBid: Boolean
+        get() = this == BID
+
+    val isAsk: Boolean
+        get() = this == ASK
 
     companion object {
         fun of(str: String): TradeType? {

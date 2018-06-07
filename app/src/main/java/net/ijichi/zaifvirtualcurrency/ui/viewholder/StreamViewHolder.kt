@@ -9,8 +9,8 @@ import net.ijichi.zaifvirtualcurrency.ui.itemview.StreamItemView
  */
 class StreamViewHolder(private val view: StreamItemView) : RecyclerView.ViewHolder(view) {
 
-    fun update(trade: Trade, isEvenNumber: Boolean, onClick: ()->Unit) {
-        view.update(trade, isEvenNumber)
+    fun update(trade: Trade, onClick: ()->Unit) {
+        view.update(trade)
 
         view.setOnClickListener {
             onClick()

@@ -56,6 +56,7 @@ class StreamService {
     }
 
     private fun onMessage(message: String, onUpdate: (StreamStatus) -> Unit) {
+        Timber.i("message:$message")
         val status = try {
             ApiUtil.gson.fromJson(message, StreamStatus::class.java)
         } catch (e: Exception) {

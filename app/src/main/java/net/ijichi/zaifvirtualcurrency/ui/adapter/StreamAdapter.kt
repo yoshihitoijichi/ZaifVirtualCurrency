@@ -25,7 +25,7 @@ class StreamAdapter(
         when(holder){
             is StreamViewHolder -> {
                 val item = states[position]
-                holder.update(item, position % 2 == 0, onClick)
+                holder.update(item, onClick)
             }
         }
     }
