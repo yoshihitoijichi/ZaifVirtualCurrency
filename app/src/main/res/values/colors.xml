@@ -3,4 +3,122 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- カラーパレット(テーマ色) -->
+    <color name="mdcp_theme_50">#FDFDFF</color>
+    <color name="mdcp_theme_100">#EBF3FF</color>
+    <color name="mdcp_theme_200">#B3D1FF</color>
+    <color name="mdcp_theme_300">#6BA7FF</color>
+    <color name="mdcp_theme_400">#4D94FF</color>
+    <color name="mdcp_theme_500">#2E82FF</color>
+    <color name="mdcp_theme_600">#0F70FF</color>
+    <color name="mdcp_theme_700">#0060F0</color>
+    <color name="mdcp_theme_800">#0054D1</color>
+    <color name="mdcp_theme_900">#0048B3</color>
+    <color name="mdcp_theme_a100">#F2F7FF</color>
+    <color name="mdcp_theme_a200">#C7DDFF</color>
+    <color name="mdcp_theme_a400">#61A0FF</color>
+    <color name="mdcp_theme_a700">#4791FF</color>
+
+    <!-- カラーパレット(無彩色) -->
+    <color name="mdcp_grey_50">#FAFAFA</color>
+    <color name="mdcp_grey_100">#F5F5F5</color>
+    <color name="mdcp_grey_200">#EEEEEE</color>
+    <color name="mdcp_grey_300">#E0E0E0</color>
+    <color name="mdcp_grey_400">#BDBDBD</color>
+    <color name="mdcp_grey_500">#9E9E9E</color>
+    <color name="mdcp_grey_600">#757575</color>
+    <color name="mdcp_grey_700">#616161</color>
+    <color name="mdcp_grey_800">#424242</color>
+    <color name="mdcp_grey_900">#212121</color>
+    <color name="mdcp_black">#000000</color>
+    <color name="mdcp_white">#FFFFFF</color>
+
+    <!-- テーマ -->
+    <!--<color name="colorPrimary">@color/mdcp_theme_500</color>-->
+    <!--<color name="colorPrimaryDark">@color/mdcp_theme_700</color>-->
+    <!--<color name="colorAccent">@color/mdcp_theme_a700</color>-->
+
+    <!-- 共通 -->
+    <color name="common_text_color">@color/mdcp_grey_900</color>
+    <color name="common_text_color_secondary">@color/mdcp_grey_600</color>
+    <color name="common_link_text_color">#0049D0</color>
+    <color name="common_active_icon">@color/mdcp_grey_500</color>
+    <color name="common_disabled_icon">@color/mdcp_grey_300</color>
+    <color name="common_emphasis_icon">@color/mdcp_theme_a700</color>
+    <color name="common_avatar_empty">@color/mdcp_grey_300</color>
+
+    <!-- item list -->
+    <color name="shape_item_list_line_divider">@color/mdcp_grey_300</color>
+
+    <!-- background -->
+    <color name="activity_default_background_color">@color/mdcp_white</color>
+    <color name="fragment_default_background_color">@color/mdcp_white</color>
+
+    <!-- app theme -->
+    <color name="app_theme_primary">@color/colorPrimary</color>
+    <color name="app_theme_primary_dark">@color/colorPrimaryDark</color>
+    <color name="app_theme_primary_accent">@color/colorAccent</color>
+    <color name="app_theme_control_activated">@color/colorPrimary</color>
+
+    <!-- toolbar -->
+    <!-- default -->
+    <color name="toolbar_text">@color/mdcp_grey_700</color>
+    <color name="toolbar_background">@color/colorPrimary</color>
+    <!-- account toolbar -->
+    <color name="toolbar_account_background">@android:color/transparent</color>
+    <color name="toolbar_account_scrim">@color/colorPrimary</color>
+
+    <!-- main -->
+    <!-- main tab layout-->
+    <color name="main_tab_layout_background">@color/mdcp_theme_50</color>
+    <color name="main_tab_layout_background_selected">@color/mdcp_theme_600</color>
+
+    <!-- account -->
+    <color name="account_header_brightness_start">#30000000</color>
+    <color name="account_header_brightness_end">#80000000</color>
+    <color name="account_header_display_name_text">@color/mdcp_white</color>
+    <color name="account_header_account_name_text">@color/mdcp_grey_200</color>
+    <color name="account_header_account_note_text">@color/mdcp_white</color>
+    <!-- account tab layout-->
+    <color name="account_tab_layout_background">@color/mdcp_theme_50</color>
+    <color name="account_tab_layout_background_selected">@color/mdcp_theme_600</color>
+    <color name="account_tab_layout_item_title_text">@color/mdcp_grey_700</color>
+    <color name="account_tab_layout_item_count_text">@color/mdcp_grey_600</color>
+
+    <!-- search -->
+    <color name="hashtag_item_hashtag_title_text">@color/common_text_color</color>
+
+
+    <!-- drawer -->
+    <color name="drawer_background">@color/mdcp_white</color>
+    <color name="drawer_item_pressed">@color/mdcp_theme_200</color>
+    <color name="drawer_item_text">@color/common_text_color</color>
+
+    <!-- toot -->
+    <color name="toot_cw_enabled_text_color">@color/colorPrimary</color>
+    <color name="toot_cw_disabled_text_color">@color/mdcp_grey_500</color>
+    <color name="toot_nsfw_enabled_text_color">@color/colorPrimary</color>
+    <color name="toot_nsfw_disabled_text_color">@color/mdcp_grey_500</color>
+    <color name="toot_status_input_text_color">@color/mdcp_grey_700</color>
+    <color name="toot_spoiler_input_text_color">@color/mdcp_grey_700</color>
+    <color name="toot_enquete_enabled_color">@color/colorPrimary</color>
+
+    <!-- reblog -->
+    <color name="item_reblog_sender_display_name_text">@color/mdcp_grey_700</color>
+    <color name="item_reblogged_status_content_text">@color/mdcp_grey_700</color>
+    <!-- favorite -->
+    <color name="item_favourite_sender_display_name_text">@color/mdcp_grey_700</color>
+    <color name="item_favourited_status_content_text">@color/mdcp_grey_700</color>
+
+    <!-- media attachment -->
+    <color name="media_attachment_background">@color/mdcp_grey_900</color>
+
+    <!-- crop view -->
+    <color name="overlay">#AA1C1C1C</color>
+    <color name="windowBackground">#1C1C1C</color>
+
+    <!-- empty content -->
+    <color name="fragment_empty_background">@color/mdcp_white</color>
+    <color name="fragment_empty_background_pressed">@color/mdcp_theme_50</color>
 </resources>

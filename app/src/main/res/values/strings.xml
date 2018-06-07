@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Zaifアプリ</string>
 
+    <string name="default_text">デフォルトテキスト</string>
+
+    <!-- navigation -->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="label_time">時間:</string>
     <string name="label_trade_action">取引:</string>
     <string name="label_trade_amount">数量:</string>
@@ -8,5 +14,7 @@
 
     <string name="bid">買</string>
     <string name="ask">売</string>
+
+
 
 </resources>
