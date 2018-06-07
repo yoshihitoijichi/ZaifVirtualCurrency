@@ -3,6 +3,7 @@ package net.ijichi.zaifvirtualcurrency.ui
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
+import net.ijichi.zaifvirtualcurrency.ui.fragment.BtcJpyFragment
 
 /**
  * pager adapter

@@ -16,7 +16,7 @@ import java.util.stream.Stream
 class BtcJpyRecyclerAdapter(
     private val context: Context?,
     private val states: ArrayList<Trade>,
-    private val onClick: (Int)->Unit
+    private val onClick: ()->Unit
 ) : AbstractRecyclerAdapter<Trade>(states) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -27,7 +27,7 @@ class BtcJpyRecyclerAdapter(
         when(holder){
             is BtcJpyViewHolder -> {
                 val item = states[position]
-                holder.update(item, position % 2 == 0)
+                holder.update(item, position % 2 == 0, onClick)
             }
         }
     }

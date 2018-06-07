@@ -13,11 +13,11 @@ import java.util.stream.Stream
  */
 class BtcJpyViewHolder(private val view: BtcJpyItemView) : RecyclerView.ViewHolder(view) {
 
-    fun update(trade: Trade, isEvenNumber: Boolean) {
+    fun update(trade: Trade, isEvenNumber: Boolean, onClick: ()->Unit) {
         view.update(trade, isEvenNumber)
 
         view.setOnClickListener {
-            Timber.i("click")
+            onClick()
         }
 
     }

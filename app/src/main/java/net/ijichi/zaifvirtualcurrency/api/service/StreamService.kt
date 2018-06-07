@@ -9,7 +9,6 @@ import okhttp3.Response
 import okhttp3.WebSocket
 import okhttp3.WebSocketListener
 import okio.ByteString
-import org.json.JSONObject
 import timber.log.Timber
 
 
@@ -18,7 +17,7 @@ import timber.log.Timber
  * Created by ijichiyoshihito on 2018/06/05.
  */
 
-class StreamService() {
+class StreamService {
 
     private val normalClosureStatus = 1000
     private var urlStr = ""
@@ -59,22 +58,14 @@ class StreamService() {
     }
 
     private fun onMessage(message: String, onUpdate: (StreamStatus) -> Unit) {
-        val json = JSONObject(message)
-//        if (json.get("event") == "update") {
-//            val payload = json.get("payload").toString()
+        val status = try {
+            ApiUtil.gson.fromJson(message, StreamStatus::class.java)
+        } catch (e: Exception) {
+            Timber.e(e)
+            return
+        }
 
-            val status = try {
-                ApiUtil.gson.fromJson(message, StreamStatus::class.java)
-            }catch (e: Exception){
-                Timber.e(e)
-                return
-            }
-
-            onUpdate(status)
-//            if (isTarget(status)) {
-//                onUpdate(status)
-//            }
-//        }
+        onUpdate(status)
     }
 
     fun disconnect() {
