@@ -20,15 +20,13 @@ import timber.log.Timber
 class StreamService {
 
     private val normalClosureStatus = 1000
-    private var urlStr = ""
     private var ws: WebSocket? = null
 
     fun start(exchangeType: ExchangeType, onUpdate: (StreamStatus) -> Unit) {
         Timber.i("start exchangeType:$exchangeType")
         val queryBuilder = Uri.Builder()
         queryBuilder.appendQueryParameter("currency_pair", exchangeType.name.toLowerCase())
-        urlStr = "wss://ws.zaif.jp:8888/stream$queryBuilder"
-        Timber.i("urlStr:$urlStr")
+        val urlStr = "wss://ws.zaif.jp:8888/stream$queryBuilder"
 
         val client = ApiUtil.createClient()
         val request = Request.Builder().url(urlStr).build()

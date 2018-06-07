@@ -8,13 +8,13 @@ import net.ijichi.zaifvirtualcurrency.ui.adapter.StreamAdapter
 import timber.log.Timber
 
 /**
- * btc/jpy fragment
+ * xem/jpy fragment
  * Created by ijichiyoshihito on 2018/06/05.
  */
-class BtcJpyFragment : AbstractTabFragment<Trade>() {
+class XemJpyFragment : AbstractTabFragment<Trade>() {
 
     override val streamExchangeType: ExchangeType
-        get() = ExchangeType.BTC_JPY
+        get() = ExchangeType.XEM_JPY
 
     override fun initAdapter(): AbstractRecyclerAdapter<Trade> {
         return StreamAdapter(context, ArrayList()) {

@@ -7,7 +7,7 @@ import android.widget.FrameLayout
 import net.ijichi.zaifvirtualcurrency.R
 import net.ijichi.zaifvirtualcurrency.api.model.entity.Trade
 import net.ijichi.zaifvirtualcurrency.api.model.extension.*
-import net.ijichi.zaifvirtualcurrency.databinding.ItemBtcJpyBinding
+import net.ijichi.zaifvirtualcurrency.databinding.ItemStreamBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -16,7 +16,7 @@ import java.util.*
  */
 class StreamItemView(context: Context?) : FrameLayout(context, null, 0) {
 
-    private val binding = DataBindingUtil.inflate<ItemBtcJpyBinding>(
+    private val binding = DataBindingUtil.inflate<ItemStreamBinding>(
         LayoutInflater.from(context), R.layout.item_stream, this, true)
 
     init {

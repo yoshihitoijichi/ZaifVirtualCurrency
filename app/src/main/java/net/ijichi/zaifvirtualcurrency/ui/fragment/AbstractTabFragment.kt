@@ -12,6 +12,8 @@ import android.view.ViewGroup
 import net.ijichi.zaifvirtualcurrency.R
 import net.ijichi.zaifvirtualcurrency.api.model.entity.StreamStatus
 import net.ijichi.zaifvirtualcurrency.api.model.enum.ExchangeType
+import net.ijichi.zaifvirtualcurrency.api.model.extension.invisible
+import net.ijichi.zaifvirtualcurrency.api.model.extension.visible
 import net.ijichi.zaifvirtualcurrency.api.service.StreamService
 import net.ijichi.zaifvirtualcurrency.databinding.FragmentTabBinding
 import net.ijichi.zaifvirtualcurrency.ui.adapter.AbstractRecyclerAdapter
@@ -32,12 +34,6 @@ abstract class AbstractTabFragment<D> : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setupView()
-
-        streamService.start(streamExchangeType) {
-            activity?.runOnUiThread {
-                onUpdate(it)
-            }
-        }
     }
 
     private fun setupView() {
@@ -57,6 +53,17 @@ abstract class AbstractTabFragment<D> : Fragment() {
             adapter = initAdapter()
         }
         binding.tabRecycler.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.tabProgress.visible()
+        streamService.start(streamExchangeType) {
+            activity?.runOnUiThread {
+                binding.tabProgress.invisible()
+                onUpdate(it)
+            }
+        }
     }
 
     override fun onPause() {

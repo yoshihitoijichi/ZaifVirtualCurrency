@@ -10,6 +10,6 @@ data class StreamStatus(
 ){
     data class LastPrice(
         val action: String,
-        val price: Int
+        val price: Double
     )
 }
